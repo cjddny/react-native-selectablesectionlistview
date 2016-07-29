@@ -1,8 +1,10 @@
 'use strict';
 
-var React = require('react-native');
-var {Component, PropTypes, StyleSheet, View, Text} = React;
-var UIManager = require('NativeModules').UIManager;
+var ReactNative = require('react-native');
+var {StyleSheet, View, Text, UIManager} = ReactNative;
+var React = require('react');
+var {Component, PropTypes} = React;
+//var UIManager = require('NativeModules').UIManager;
 class SectionHeader extends Component {
 
   componentDidMount() {

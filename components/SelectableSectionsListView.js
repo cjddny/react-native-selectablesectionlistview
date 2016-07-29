@@ -1,10 +1,11 @@
 'use strict';
 /* jshint esnext: true */
 
-var React = require('react-native');
-var {Component, ListView, StyleSheet, View, PropTypes} = React;
-var UIManager = require('NativeModules').UIManager;
-var merge = require('merge');
+var ReactNative = require('react-native');
+var {StyleSheet, View, PropTypes, UIManager, ListView} = ReactNative;
+var React = require('react');
+var {Component, PropTypes} = React;
+//var UIManager = require('NativeModules').UIManager;
 
 var SectionHeader = require('./SectionHeader');
 var SectionList = require('./SectionList');
@@ -47,7 +48,7 @@ class SelectableSectionsListView extends Component {
   componentDidMount() {
     // push measuring into the next tick
     setTimeout(() => {
-      UIManager.measure(this.refs.view.getNodeHandle(), (x,y,w,h) => {
+      UIManager.measure(ReactNative.findNodeHandle(this.refs.view), (x,y,w,h) => {
         this.containerHeight = h;
       });
     }, 0);
@@ -108,12 +109,12 @@ class SelectableSectionsListView extends Component {
       var maxY = this.totalHeight - this.containerHeight + headerHeight;
       y = y > maxY ? maxY : y;
 
-      this.refs.listview.refs.listviewscroll.scrollTo(y, 0);
+      this.refs.listview.getScrollResponder().scrollTo({y:y, x:0, animated:true});
     } else {
       // this breaks, if not all of the listview is pre-rendered!
       UIManager.measure(this.cellTagMap[section], (x, y, w, h) => {
         y = y - this.props.sectionHeaderHeight;
-        this.refs.listview.refs.listviewscroll.scrollTo(y, 0);
+        this.refs.listview.getScrollResponder().scrollTo({y:y, x:0, animated:true});
       });
     }
 
@@ -225,7 +226,10 @@ class SelectableSectionsListView extends Component {
       this.renderHeader :
       this.props.renderHeader;
 
-    var props = merge(this.props, {
+	var props = {};
+	for(var p in this.props)
+		props[p] = this.props[p];
+	var otherProps = {
       onScroll: this.onScroll,
       onScrollAnimationEnd: this.onScrollAnimationEnd,
       dataSource,
@@ -233,7 +237,9 @@ class SelectableSectionsListView extends Component {
       renderHeader,
       renderRow: this.renderRow,
       renderSectionHeader
-    });
+    };
+	for(var p in otherProps)
+		props[p] = otherProps[p];
 
     props.style = void 0;
 

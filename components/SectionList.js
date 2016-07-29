@@ -1,8 +1,10 @@
 'use strict';
 
-var React = require('react-native');
-var {Component, PropTypes, StyleSheet, View, Text} = React;
-var UIManager = require('NativeModules').UIManager;
+var ReactNative = require('react-native');
+var {StyleSheet, View, Text, UIManager} = ReactNative;
+var React = require('react');
+var {Component, PropTypes} = React;
+//var UIManager = require('NativeModules').UIManager;
 
 var noop = () => {};
 var returnTrue = () => true;
@@ -118,12 +120,12 @@ var styles = StyleSheet.create({
   container: {
     position: 'absolute',
     backgroundColor: 'transparent',
-    alignItems:'center',
+    alignItems:'stretch',
     justifyContent:'center',
     right: 0,
     top: 0,
     bottom: 0,
-    width: 15
+    width: 30
   },
 
   item: {

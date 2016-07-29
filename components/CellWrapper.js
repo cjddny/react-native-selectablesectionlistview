@@ -1,7 +1,9 @@
 'use strict';
 
-var React = require('react-native');
-var {Component, PropTypes, View} = React;
+var ReactNative = require('react-native');
+var {View} = ReactNative;
+var React = require('react');
+var {Component, PropTypes} = React;
 
 class CellWrapper extends Component {
 
