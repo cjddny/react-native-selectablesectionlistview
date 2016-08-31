@@ -78,6 +78,7 @@ class SectionList extends Component {
         onResponderGrant={this.detectAndScrollToSection}
         onResponderMove={this.detectAndScrollToSection}
         onResponderRelease={this.resetSection}
+        onResponderTerminationRequest={() => false}
       >
         {sections}
       </View>
