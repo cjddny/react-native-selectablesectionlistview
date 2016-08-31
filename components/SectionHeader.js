@@ -27,9 +27,9 @@ class SectionHeader extends Component {
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor:'#f8f8f8',
+    backgroundColor:'#d8d8d8',
     borderTopWidth: 1,
-    borderTopColor: '#ececec'
+    borderTopColor: '#cccccc'
   },
   text: {
     fontWeight: '700',
