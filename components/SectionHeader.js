@@ -4,7 +4,6 @@ var ReactNative = require('react-native');
 var {StyleSheet, View, Text, UIManager} = ReactNative;
 var React = require('react');
 var {Component, PropTypes} = React;
-//var UIManager = require('NativeModules').UIManager;
 class SectionHeader extends Component {
 
   componentDidMount() {
@@ -27,9 +26,9 @@ class SectionHeader extends Component {
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor:'#d8d8d8',
+    backgroundColor:'#f8f8f8',
     borderTopWidth: 1,
-    borderTopColor: '#cccccc'
+    borderTopColor: '#ececec'
   },
   text: {
     fontWeight: '700',

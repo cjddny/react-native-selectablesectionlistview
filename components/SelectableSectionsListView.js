@@ -5,7 +5,6 @@ var ReactNative = require('react-native');
 var {StyleSheet, View, PropTypes, UIManager, ListView} = ReactNative;
 var React = require('react');
 var {Component, PropTypes} = React;
-//var UIManager = require('NativeModules').UIManager;
 
 var SectionHeader = require('./SectionHeader');
 var SectionList = require('./SectionList');
@@ -226,10 +225,10 @@ class SelectableSectionsListView extends Component {
       this.renderHeader :
       this.props.renderHeader;
 
-	var props = {};
-	for(var p in this.props)
-		props[p] = this.props[p];
-	var otherProps = {
+    var props = {};
+    for(var p in this.props)
+        props[p] = this.props[p];
+    var otherProps = {
       onScroll: this.onScroll,
       onScrollAnimationEnd: this.onScrollAnimationEnd,
       dataSource,
@@ -238,8 +237,8 @@ class SelectableSectionsListView extends Component {
       renderRow: this.renderRow,
       renderSectionHeader
     };
-	for(var p in otherProps)
-		props[p] = otherProps[p];
+    for(var p in otherProps)
+        props[p] = otherProps[p];
 
     props.style = void 0;
 
