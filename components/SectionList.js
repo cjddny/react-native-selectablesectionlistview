@@ -1,8 +1,9 @@
 'use strict';
 
-var React = require('react-native');
-var {Component, PropTypes, StyleSheet, View, Text} = React;
-var UIManager = require('NativeModules').UIManager;
+var ReactNative = require('react-native');
+var {StyleSheet, View, Text, UIManager} = ReactNative;
+var React = require('react');
+var {Component, PropTypes} = React;
 
 var noop = () => {};
 var returnTrue = () => true;
@@ -76,6 +77,7 @@ class SectionList extends Component {
         onResponderGrant={this.detectAndScrollToSection}
         onResponderMove={this.detectAndScrollToSection}
         onResponderRelease={this.resetSection}
+        onResponderTerminationRequest={() => false}
       >
         {sections}
       </View>
