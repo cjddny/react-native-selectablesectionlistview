@@ -120,12 +120,12 @@ var styles = StyleSheet.create({
   container: {
     position: 'absolute',
     backgroundColor: 'transparent',
-    alignItems:'center',
+    alignItems:'stretch',
     justifyContent:'center',
     right: 0,
     top: 0,
     bottom: 0,
-    width: 15
+    width: 30
   },
 
   item: {
