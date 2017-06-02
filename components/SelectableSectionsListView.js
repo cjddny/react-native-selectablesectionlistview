@@ -2,10 +2,12 @@
 /* jshint esnext: true */
 
 var ReactNative = require('react-native');
-var {StyleSheet, View, PropTypes, UIManager, ListView} = ReactNative;
+var {StyleSheet, View, PropTypes, UIManager, ListView, Dimensions} = ReactNative;
 var React = require('react');
 var {Component, PropTypes} = React;
-
+//var UIManager = require('NativeModules').UIManager;
+var {width, height} = Dimensions.get('window');
+const NAV_BAR_HEIGHT = 60;
 var SectionHeader = require('./SectionHeader');
 var SectionList = require('./SectionList');
 var CellWrapper = require('./CellWrapper');
@@ -88,6 +90,9 @@ class SelectableSectionsListView extends Component {
   }
 
   scrollToSection(section) {
+	 if (this.totalHeight < height - NAV_BAR_HEIGHT) {
+		 return;
+	 }
     var y = 0;
     var headerHeight = this.props.headerHeight || 0;
     y += headerHeight;
@@ -225,10 +230,10 @@ class SelectableSectionsListView extends Component {
       this.renderHeader :
       this.props.renderHeader;
 
-    var props = {};
-    for(var p in this.props)
-        props[p] = this.props[p];
-    var otherProps = {
+	var props = {};
+	for(var p in this.props)
+		props[p] = this.props[p];
+	var otherProps = {
       onScroll: this.onScroll,
       onScrollAnimationEnd: this.onScrollAnimationEnd,
       dataSource,
@@ -237,8 +242,8 @@ class SelectableSectionsListView extends Component {
       renderRow: this.renderRow,
       renderSectionHeader
     };
-    for(var p in otherProps)
-        props[p] = otherProps[p];
+	for(var p in otherProps)
+		props[p] = otherProps[p];
 
     props.style = void 0;
 
